@@ -1,14 +1,30 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+#![doc = include_str!("../README.md")]
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+#![forbid(
+    missing_docs,
+    unsafe_code,
+    unused_imports,
+    unused_mut,
+    unused_results,
+    unused_allocation,
+    unused_must_use,
+    unreachable_patterns,
+    trivial_casts,
+    unsafe_op_in_unsafe_fn,
+    overflowing_literals,
+)]
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub use standardform;
+pub use fraction;
+
+mod number;
+mod err;
+
+pub use number::*;
+pub use err::*;
+
+#[cfg(feature = "num")]
+mod num;
+
+#[cfg(feature = "num")]
+pub use self::num::*;

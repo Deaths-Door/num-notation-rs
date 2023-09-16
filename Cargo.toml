@@ -2,3 +2,21 @@
 name = "num-notation"
 version = "0.1.0"
 edition = "2021"
+readme = "README.md"
+authors = ["Aarav Shah <aaravaditya51@gmail.com>"]
+description = "Offers multiple numeric choices, allowing you to work with various number representations including StandardForm, fractions, and f64 floating-point decimals. This versatile crate empowers your Rust projects with flexible numeric handling."
+documentation = "https://docs.rs/num-notation"
+repository = "https://github.com/Deaths-Door/num-notation-rs"
+homepage = "https://github.com/Deaths-Door/num-notation-rs"
+license = "MIT OR Apache-2.0"
+
+[features]
+num = ["dep:num-traits","standardform/num"]
+
+[dependencies]
+standardform = "0.1.2"
+fraction = { version = "0.13.1" , default-features = false }
+
+thiserror = "1.0.48"
+
+num-traits = { version = "0.2.16" , optional = true }
