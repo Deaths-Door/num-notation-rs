@@ -40,7 +40,7 @@ impl FromPrimitive for Number {
 impl Num for Number {
     type FromStrRadixErr = ParsingNumberError;
     #[inline]
-    fn from_str_radix(s: &str, radix: u32)-> Result<Self,Self::FromStrRadixErr> {
+    fn from_str_radix(s: &str, _: u32)-> Result<Self,Self::FromStrRadixErr> {
         Self::try_from(s)
     }
 }

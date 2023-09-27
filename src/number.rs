@@ -1,4 +1,5 @@
 use std::ops::{Add,Sub,Mul,Div,Rem,AddAssign,SubAssign,MulAssign,DivAssign,RemAssign,Neg};
+use std::cmp::Ordering;
 
 use standardform::StandardForm;
 use fraction::GenericFraction;
@@ -89,6 +90,15 @@ impl Neg for Number {
         }
     }
 }
+
+impl Eq for Number {}
+
+impl Ord for Number {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
 
 fn from_fraction_rational_to_sf(sign : fraction::Sign,ratio : fraction::Ratio<u32>) -> StandardForm {
     let (mantissa,exponent) = (match sign{
@@ -288,7 +298,7 @@ macro_rules! primitives {
     (ord => $($t : ty),*) => {
         $(
             impl PartialOrd<$t> for Number {
-                fn partial_cmp(&self, other: &$t) -> Option<std::cmp::Ordering> {
+                fn partial_cmp(&self, other: &$t) -> Option<Ordering> {
                     match self {
                         Number::Decimal(f) => f.partial_cmp(&(*other as f64)),
                         Number::StandardForm(sf) => {

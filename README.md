@@ -12,6 +12,8 @@
   - Decimal: Floating-point decimal numbers.
 * Clone and debug derive implementations for numeric variants.
 * Integration with the `num_traits` crate for advanced numeric operations.
+* Can be hashed as well using `hash` feature.
+
 
 ## Installation
 
@@ -19,16 +21,22 @@ To use **num-notation** in your Rust project, simply add it to your `Cargo.toml`
 
 ```toml
 [dependencies]
-num-notation = "0.1"
+num-notation = "0.1" # VERSION AT TIME OF WRITING
 ```
 
 To enable intergation it with `num_traits` , enable `num` feature:
 
 ```toml
 [dependencies]
-num-notation = { version = "0.1" , features = ["num"] }
+num-notation = { version = "0.1" , features = ["num"] } # VERSION AT TIME OF WRITING
 ```
 
+To enable hashing , enable `hash` feature:
+
+```toml
+[dependencies]
+num-notation = { version = "0.1.1" , features = ["hash"] } # VERSION AT TIME OF WRITING
+```
 ## Usage
 
 **Creating Numbers**
