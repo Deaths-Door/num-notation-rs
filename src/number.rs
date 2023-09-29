@@ -50,6 +50,25 @@ impl From<f64> for Number {
     }
 }
 
+impl From<Number> for f64 {
+    fn from(value: Number) -> Self {
+        match value {
+            Number::Decimal(d) => d,
+            Number::StandardForm(sf) => sf.into(),
+            Number::Fraction(fr) => match fr {
+                GenericFraction::Rational(sign,ratio) => match sign.is_positive() {
+                    true => ratio.to_integer() as f64 ,
+                    false => -(ratio.to_integer() as f64)
+                },
+                GenericFraction::Infinity(sign) => match sign.is_positive() {
+                    true => f64::INFINITY,
+                    false => -f64::INFINITY
+                },
+                GenericFraction::NaN => f64::NAN,
+            },
+        }
+    }
+}
 impl TryFrom<&str> for Number {
     type Error = ParsingNumberError;
     fn try_from(value : &str) -> Result<Self, Self::Error> {
