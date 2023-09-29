@@ -29,6 +29,9 @@ mod num;
 #[cfg(feature = "num")]
 pub use self::num::*;
 
+#[cfg(feature="num")]
+pub use num_traits::*;
+
 #[cfg(feature = "hash")]
 mod hash;
 
