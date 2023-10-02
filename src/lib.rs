@@ -37,3 +37,9 @@ mod hash;
 
 #[cfg(feature = "hash")]
 pub use self::hash::*;
+
+#[cfg(feature = "nom")]
+mod nom;
+
+#[cfg(feature = "nom")]
+pub use nom::*;

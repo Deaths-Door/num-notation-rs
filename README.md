@@ -13,6 +13,7 @@
 * Clone and debug derive implementations for numeric variants.
 * Integration with the `num_traits` crate for advanced numeric operations.
 * Can be hashed as well using `hash` feature.
+* Intergate with nom using `nom` feature
 
 
 ## Installation
@@ -37,6 +38,15 @@ To enable hashing , enable `hash` feature:
 [dependencies]
 num-notation = { version = "0.1.1" , features = ["hash"] } # VERSION AT TIME OF WRITING
 ```
+
+To enable intergation it with `nom` , enable `nom` feature:
+
+```toml
+[dependencies]
+num-notation = { version = "0.1.1" , features = ["nom"] }
+```
+
+
 ## Usage
 
 **Creating Numbers**
@@ -47,8 +57,6 @@ let decimal_number = Number::Decimal(42.0);
 let standard_form_number = Number::StandardForm(StandardForm::new(1.23, 2)); // Mantissa: 1.23, Exponent: 2
 let fraction_number = Number::Fraction(Fraction::new(3, 4)); // Numerator: 3, Denominator: 4
 ```
-
-
 
 You can create numbers using the `Number` enum variants. Here, we create instances of decimal, standard form, and fraction numbers.
 
