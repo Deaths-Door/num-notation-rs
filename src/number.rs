@@ -436,12 +436,26 @@ macro_rules! primitives {
             }
         )*
     };
+    (pow => $($t : ty),*) => {
+        $(
+            #[cfg(feature="num")]
+            impl num_traits::Pow<$t> for StandardForm {
+                type Output = f64;
+            
+                #[must_use]
+                fn pow(self, other: $t) -> Self::Output {
+                    f64::from(self).powf(other as f64)
+                }
+            }
+        )*
+    };
     (operations => $($t:ty),*) => {
         $(
             primitives!(add => $t);
             primitives!(sub => $t);
             primitives!(mul => $t);
             primitives!(div => $t);
+            primitives!(rem => $t);
             primitives!(rem => $t);
         )*
     }

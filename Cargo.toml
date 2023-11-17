@@ -16,7 +16,7 @@ hash = ["dep:ordered-float","standardform/hash"]
 nom = ["dep:nom","standardform/nom"]
 
 [dependencies]
-standardform = "0.1.9"
+standardform = "0.2.0"
 fraction = { version = "0.13.1" , default-features = false }
 
 thiserror = "1.0.48"
