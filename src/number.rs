@@ -456,7 +456,7 @@ macro_rules! primitives {
             primitives!(mul => $t);
             primitives!(div => $t);
             primitives!(rem => $t);
-            primitives!(rem => $t);
+            primitives!(pow => $t);
         )*
     }
 }
